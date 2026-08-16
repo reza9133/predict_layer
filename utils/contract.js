@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0x0EBE5A3455b24E7F3b5C0497D8d080956aC41452";
+export const CONTRACT_ADDRESS = "0x0364D7EE5edD505d930C19349A2581A3792d8162";
 
 export const CONTRACT_ABI = [
   "function create_market(string question, string sources_json, uint16 duration_days, uint16 fee_bps) returns (uint256)",
