@@ -280,25 +280,20 @@ class PredictLayer(gl.Contract):
 
         total_pool = winning_pool + losing_pool
 
-        # Calculate total fee and net pool
+        # Calculate fee
         fee_amount = u256((int(total_pool) * int(m.creator_fee_bps)) // 10000)
         net_pool = total_pool - fee_amount
 
         # Calculate user payout
         payout = u256((int(my_bet) * int(net_pool)) // int(winning_pool))
-        
-        # Calculate creator's fee share from THIS specific claim
-        creator_fee_share = u256((int(my_bet) * int(fee_amount)) // int(winning_pool))
 
         # Checks-Effects-Interactions
         self.bets[my_bet_key] = u256(0)
 
-        # 1. Pay the winner
+        # NOTE: as in the original contract, fee_amount is deducted from the
+        # payout pool but not routed anywhere claimable by the creator. See
+        # the message accompanying this file for details.
         _Payee(caller_addr).emit_transfer(value=payout)
-        
-        # 2. Automatically pay the creator their proportional fee
-        if creator_fee_share > u256(0):
-            _Payee(m.creator).emit_transfer(value=creator_fee_share)
 
     # ------------------------------------------------------------------
     # Views
