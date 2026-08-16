@@ -3,7 +3,7 @@
 import { createClient } from "genlayer-js";
 import { testnetBradbury } from "genlayer-js/chains";
 
-export const CONTRACT_ADDRESS = "0x0364D7EE5edD505d930C19349A2581A3792d8162";
+export const CONTRACT_ADDRESS = "0x6823Aed36A72fBE98179D0366A562aF8E9a00FaC";
 export const GENLAYER_NETWORK_NAME = "testnetBradbury";
 export const BET_AMOUNT_WEI = 10000000000000000n;
 
